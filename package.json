@@ -1,0 +1,21 @@
+{
+  "name": "test-cli",
+  "version": "1.0.0",
+  "description": "CLI for initializing projects",
+  "main": "clitest.mjs",
+  "type": "module",
+  "bin": {
+    "api": "./init.mjs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "ora": "^8.0.1",
+    "yargs": "^17.0.1"
+  }
+}
