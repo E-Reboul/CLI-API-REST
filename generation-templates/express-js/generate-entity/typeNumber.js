@@ -1,0 +1,1 @@
+this.{{ATTRIBUTE_NAME}} = 0;

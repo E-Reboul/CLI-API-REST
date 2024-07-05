@@ -8,7 +8,7 @@ class Entity {
             return Entity.instance;
         }
 
-        // Properties of the entity
+        // Set Properties of the entity
         this.id = 0;
         this.name = "";
         this.email = "";
