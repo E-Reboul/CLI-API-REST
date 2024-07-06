@@ -25,10 +25,10 @@ class {{ENTITY_NAME}}Factory {
 
     static updateEntity(req) {
         const bodyData = {
-            name: req.body.name,
-            email: req.body.email,
-            role: req.body.role,
-            description: req.body.description
+            // name: req.body.name,
+            // email: req.body.email,
+            // role: req.body.role,
+            // description: req.body.description
         };
 
         const entityUpdate = {{ENTITY_NAME}}Entity.getInstance();

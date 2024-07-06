@@ -1,3 +1,3 @@
-setId(new{{ATTRIBUTE_NAME}}) {
-    this.{{ATTRIBUTE_NAME}} = newId;
+set{{ATTRIBUTE_NAME}}(new{{ATTRIBUTE_NAME}}) {
+    this.{{ATTRIBUTE_NAME}} = new{{ATTRIBUTE_NAME}};
 }
