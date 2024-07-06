@@ -9,11 +9,11 @@ import ora from 'ora';
 import { createEntityFiles } from './utils/createEntityFiles.js';
 import { fileURLToPath } from 'url';
 
-// path where executed command
+// Path where executed command
 const directoryProject = process.cwd();
-// path of CLI
+// Path of CLI
 const directoryCLI = path.dirname(fileURLToPath(import.meta.url));
-// path for generationEntity templates regexp
+// Path for generationEntity templates regexp
 const directoryGenerationEntity = path.join(directoryCLI, 'generation-templates', 'express-js', 'generate-entity');
 
 const templateStringType = path.join(directoryGenerationEntity, 'typeString.js');
@@ -39,6 +39,11 @@ const insertCodeAtMarker = async (filePath, marker, insert, indentLevel = 8) => 
   const content = await fs.promises.readFile(filePath, 'utf8');
 
   const parts = content.split(marker);
+  if (parts.length < 2) {
+    loadGenerationRoute.fail(`Marker "${marker}" not found in ${filePath}`);
+    return;
+  }
+
   const beforeMarker = parts[0];
   const afterMarker = parts.slice(1).join(marker);
 
@@ -52,7 +57,7 @@ const insertCodeAtMarker = async (filePath, marker, insert, indentLevel = 8) => 
 const generateAttributes = async (attributes, templates) => {
   for (const attr of attributes) {
     let template;
-    switch(attr.type) {
+    switch (attr.type) {
       case 'STRING':
         template = await fs.promises.readFile(templateStringType, 'utf8');
         break;
@@ -65,6 +70,9 @@ const generateAttributes = async (attributes, templates) => {
       case 'DATE':
         template = await fs.promises.readFile(templateDateType, 'utf8');
         break;
+      default:
+        console.log(`Unknown attribute type: ${attr.type}`);
+        continue;
     }
 
     const entityDestination = templates.find(t => t.name === 'generateEntity').destination;
@@ -109,7 +117,7 @@ yargs(hideBin(process.argv))
     const entityFilePath = path.join(directoryProject, 'src', 'entities', `${entityName}Entity.js`);
     
     if (!fs.existsSync(entityFilePath)) {
-      createEntityFiles(directoryProject, entityName);
+      await createEntityFiles(directoryProject, entityName);
       console.log(directoryProject);
     }
 
@@ -118,7 +126,7 @@ yargs(hideBin(process.argv))
     const attributes = [];
     let firstAttributeAdded = false;
 
-    while (true) {
+    while (true) {    
       const { attribute, attributeType } = await inquirer.prompt([
         {
           type: 'input',
@@ -126,12 +134,6 @@ yargs(hideBin(process.argv))
           message: firstAttributeAdded 
             ? 'Add new attribute (leave empty to finish):'
             : 'Add first attribute:',
-          validate: (input) => {
-            if (input.trim() === 'Attribute') {
-              console.log('')
-            }
-            return true;
-          }
         },
         {
           type: 'list',
@@ -189,8 +191,7 @@ yargs(hideBin(process.argv))
 
     await generateAttributes(attributes, templates);
 
-    const importMarker = '//insert import routes';
-    const routesMarker = '// insert routes here';
+    console.log('Attributes generated successfully!');
   })
   .help()
   .argv;
