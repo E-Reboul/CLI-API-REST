@@ -29,7 +29,7 @@ export const createEntityFiles = async (projectPath, entityName) => {
       try {
         await fs.access(file.dest); 
       } catch {
-        await copyAndReplaceRegexpFile(file.src, file.dest, entityNameRegexp, entityName);
+        copyAndReplaceRegexpFile(file.src, file.dest, entityNameRegexp, entityName);
       }
     }
 
