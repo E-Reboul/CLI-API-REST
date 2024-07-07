@@ -5,7 +5,7 @@ import ora from "ora";
 import { fileURLToPath } from 'url';
 
 const filePath = path.dirname(fileURLToPath(import.meta.url));
-const cliPath = path.resolve(filePath, '..'); // Ajustez ceci selon la profondeur de votre fichier
+const cliPath = path.resolve(filePath, '..');
 
 export const createFileTree = (projectPath) => {
   const loadFileTree = ora(`Building file tree...`).start();
