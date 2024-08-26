@@ -1,6 +1,6 @@
-# My Project CLI
+# CLI TOOL {TEST PROJECT} !!!VERIFY ALL BRANCHES FOR SEE ALL
 
-A CLI tool to initialize and manage your API projects with ease.
+Test CLI Tool project, initial setup completed, future development to be done in the GenApp repository.
 
 ## Table of Contents
 
