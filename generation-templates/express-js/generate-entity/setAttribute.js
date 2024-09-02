@@ -1,0 +1,3 @@
+set{{ATTRIBUTE_NAME}}(new{{ATTRIBUTE_NAME}}) {
+    this.{{ATTRIBUTE_NAME}} = new{{ATTRIBUTE_NAME}};
+}
