@@ -1,6 +1,6 @@
-# CLI-API-REST
+# TEST CLI-API-REST
 
-A CLI tool to initialize and manage your API projects with ease.
+Test CLI Tool project, initial setup completed, future development to be done in the GenApp repository.
 
 ## Table of Contents
 
