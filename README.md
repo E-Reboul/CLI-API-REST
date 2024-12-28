@@ -1,6 +1,6 @@
-# TEST CLI-API-REST
+# CLI-API-REST with Express
 
-Test CLI Tool project, initial setup completed, future development to be done in the GenApp repository.
+CLI Tool project, initial setup completed, future development to be done in the GenApp repository.
 
 ## Table of Contents
 
