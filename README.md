@@ -1,4 +1,4 @@
-# CLI-API-REST with Express
+# Test CLI to make API Express
 
 /!!\ CLI Tool project, initial setup completed, future development to be done in the GenApp repository. /!!\
 
